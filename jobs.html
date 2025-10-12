@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>DevJobs - Jobs</title>
+  <meta charset="UTF-8" />
+  <meta name="description" content="Jobs offers list with filters">
+  <link rel="stylesheet" href="./styles.css" />
+  <script async src="./script.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1>
+      <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <polyline points="16 18 22 12 16 6"></polyline>
+        <polyline points="8 6 2 12 8 18"></polyline>
+      </svg>
+      DevJobs
+    </h1>
+
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Jobs</a>
+    </nav>
+
+    <div>
+      <a href="">Post a Job</a>
+      <a href="">Login</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="jobs-search">
+      <h1>Find your next job</h1>
+      <p>Explore thousands of opportunities in the tech sector.</p>
+
+      <form role="search">
+        <div class="search-bar">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-search">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+            <path d="M21 21l-6 -6" />
+          </svg>
+
+          <input required type="text" placeholder="Look for jobs, companies or skills">
+        </div>
+
+
+        <div class="search-filters">
+          <select name="technology" id="filter-technology">
+            <option value="">Technology</option>
+            <option value="javascript">JavaScript</option>
+            <option value="python">Python</option>
+            <option value="java">Java</option>
+            <option value="react">React</option>
+            <option value="nodejs">Node.js</option>
+          </select>
+
+          <select name="location" id="location">
+            <option value="">location</option>
+            <option value="remoto">Remote</option>
+            <option value="cdmx">Mexico City</option>
+            <option value="guadalajara">Guadalajara</option>
+            <option value="monterrey">Monterrey</option>
+            <option value="barcelona">Barcelona</option>
+          </select>
+
+          <select name="experience-level" id="experience-level">
+            <option value="">Experience Level</option>
+            <option value="junior">Junior</option>
+            <option value="mid">Mid-level</option>
+            <option value="senior">Senior</option>
+            <option value="lead">Lead</option>
+          </select>
+        </div>
+      </form>
+    </section>
+
+
+    <section>
+      <h2>Search results</h2>
+
+      <div class="jobs-listings">
+        <article class="job-listing-card">
+          <div>
+            <h3>Software Engineer</h3>
+            <small>Tech Solutions Inc. | Remote</small>
+            <p>We are looking for a software engineer with experience in web development and knowledge of JavaScript,
+              React,
+              and
+              Node.js. The ideal candidate must be able to work in a team and have good communication skills.</p>
+          </div>
+          <button class="button-apply-job" id="apply-job-button">Apply</button>
+        </article>
+
+
+        <article class="job-listing-card">
+          <div>
+            <h3>Data Analyst</h3>
+            <small>Data Driven Co. | Mexico City</small>
+            <p>We are looking for a data analyst with experience in handling large datasets and visualization tools.
+              Knowledge of SQL, Python, and R is required.</p>
+          </div>
+          <button class="button-apply-job">Apply</button>
+        </article>
+
+        <article class="job-listing-card">
+          <div>
+            <h3>Mobile Applications Developer</h3>
+            <small>Mobile Apps Ltd. | Guadalajara</small>
+            <p>We are looking for a mobile applications developer with experience in iOS and/or Android. The candidate
+              must have knowledge of Swift, Kotlin, and user interface development.</p>
+          </div>
+          <button class="button-apply-job">Apply</button>
+        </article>
+
+        <article class="job-listing-card">
+          <div>
+            <h3>DevOps Engineer</h3>
+            <small>Cloud Services SA | Remote</small>
+            <p>We are looking for a DevOps engineer with experience in managing cloud infrastructures, process
+              automation, and continuous integration tools. Knowledge of AWS, Azure, or GCP is required.</p>
+          </div>
+          <button class="button-apply-job">Apply</button>
+        </article>
+      </div>
+
+
+      <nav class="pagination">
+        <a href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M15 6l-6 6l6 6" />
+          </svg></a>
+        <a class="is-active" href="#">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M9 6l6 6l-6 6" />
+          </svg></a>
+      </nav><a href="mailto:"></a>
+    </section>
+  </main>
+
+  <footer>
+    <small>&copy; 2025 DevJobs. Rights reserved.</small>
+  </footer>
+
+</body>
+</html>
