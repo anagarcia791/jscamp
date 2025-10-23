@@ -5,8 +5,8 @@
   <title>DevJobs - Jobs</title>
   <meta charset="UTF-8" />
   <meta name="description" content="Jobs offers list with filters">
-  <link rel="stylesheet" href="./styles.css" />
-  <script type="module" src="./script.js"></script>
+  <link rel="stylesheet" href="./styles_2.css" />
+  <script type="module" src="./main.js"></script>
   <!-- async not recommended because it loads js and executes it when it's ready, can be before or after html parsing -->
 </head>
 
@@ -22,13 +22,18 @@
     </h1>
 
     <nav>
-      <a href="#">Home</a>
       <a href="#">Jobs</a>
     </nav>
 
     <div>
-      <a href="">Post a Job</a>
-      <a href="">Login</a>
+      <devjobs-avatar service="google" username="google.com" size="32">
+      </devjobs-avatar>
+
+      <devjobs-avatar service="google" username="netflix.com" size="32">
+      </devjobs-avatar>
+
+      <!-- <devjobs-avatar service="github" username="anagarcia791" size="32">
+      </devjobs-avatar> -->
     </div>
   </header>
 
@@ -95,51 +100,7 @@
     <section>
       <h2>Search results</h2>
 
-      <div class="jobs-listings">
-        <article class="job-listing-card" data-mode="remote">
-          <div>
-            <h3>Software Engineer</h3>
-            <small>Tech Solutions Inc. | Remote</small>
-            <p>We are looking for a software engineer with experience in web development and knowledge of JavaScript,
-              React,
-              and
-              Node.js. The ideal candidate must be able to work in a team and have good communication skills.</p>
-          </div>
-          <button class="button-apply-job" id="apply-job-button">Apply</button>
-        </article>
-
-
-        <article class="job-listing-card" data-mode="cdmx">
-          <div>
-            <h3>Data Analyst</h3>
-            <small>Data Driven Co. | Mexico City</small>
-            <p>We are looking for a data analyst with experience in handling large datasets and visualization tools.
-              Knowledge of SQL, Python, and R is required.</p>
-          </div>
-          <button class="button-apply-job">Apply</button>
-        </article>
-
-        <article class="job-listing-card" data-mode="guadalajara">
-          <div>
-            <h3>Mobile Applications Developer</h3>
-            <small>Mobile Apps Ltd. | Guadalajara</small>
-            <p>We are looking for a mobile applications developer with experience in iOS and/or Android. The candidate
-              must have knowledge of Swift, Kotlin, and user interface development.</p>
-          </div>
-          <button class="button-apply-job">Apply</button>
-        </article>
-
-        <article class="job-listing-card" data-mode="remote">
-          <div>
-            <h3>DevOps Engineer</h3>
-            <small>Cloud Services SA | Remote</small>
-            <p>We are looking for a DevOps engineer with experience in managing cloud infrastructures, process
-              automation, and continuous integration tools. Knowledge of AWS, Azure, or GCP is required.</p>
-          </div>
-          <button class="button-apply-job">Apply</button>
-        </article>
-      </div>
-
+      <div class="jobs-listings"></div>
 
       <nav class="pagination">
         <a href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
