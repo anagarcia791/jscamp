@@ -11,10 +11,11 @@ fetch("data.json")
       //jobElement.setAttribute("data-mode", job.data.mode);
       jobElement.dataset.mode = job.data.mode;
       jobElement.dataset.level = job.data.level;
+      jobElement.dataset.technology = job.data.technology.join(",");
       jobElement.innerHTML = `
         <div>
           <h3>${job.title}</h3>
-          <small>${job.company} | ${job.location}</small>
+          <small>${job.company} | ${job.location} | ${job.data.level}</small>
           <p>${job.description}</p>
         </div>
         <button class="button-apply-job">Apply</button>

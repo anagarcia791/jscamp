@@ -9,7 +9,7 @@
       "data": {
         "technology": ["react", "node", "javascript"],
         "mode": "remote",
-        "level": "senior"
+        "level": "Senior"
       }
     },
     {
@@ -19,9 +19,9 @@
       "location": "Ciudad de México",
       "description": "We are looking for a data analyst with experience in handling large datasets and visualization tools. Knowledge of SQL, Python, and R is required.",
       "data": {
-        "technology": "python",
+        "technology": ["python"],
         "mode": "cdmx",
-        "level": "junior"
+        "level": "Junior"
       }
     },
     {
@@ -31,9 +31,9 @@
       "location": "Guadalajara",
       "description": "We are looking for a mobile applications developer with experience in iOS and/or Android. The candidate must have knowledge of Swift, Kotlin, and user interface development.",
       "data": {
-        "technology": "mobile",
+        "technology": ["mobile"],
         "mode": "guadalajara",
-        "level": "mid-level"
+        "level": "Mid-level"
       }
     },
     {
@@ -43,9 +43,9 @@
       "location": "Remoto",
       "description": "We are looking for a DevOps engineer with experience in managing cloud infrastructures, process automation, and continuous integration tools. Knowledge of AWS, Azure, or GCP is required.",
       "data": {
-        "technology": "mobile",
+        "technology": ["aws", "azure", "gcp"],
         "mode": "remoto",
-        "level": "mid-level"
+        "level": "Mid-level"
       }
     },
     {
@@ -55,9 +55,9 @@
       "location": "Barcelona",
       "description": "We are looking for a UX/UI designer with a passion for creating exceptional digital experiences. Experience in Figma, user-centered design, and collaboration with development teams is required.",
       "data": {
-        "technology": "mobile",
+        "technology": ["figma"],
         "mode": "barcelona",
-        "level": "mid-level"
+        "level": "Mid-level"
       }
     },
     {
@@ -67,9 +67,9 @@
       "location": "Buenos Aires",
       "description": "We are looking for a database administrator with experience in PostgreSQL and MySQL. The candidate must ensure the availability, security, and performance of production databases.",
       "data": {
-        "technology": "mobile",
+        "technology": ["SQL"],
         "mode": "bsas",
-        "level": "mid-level"
+        "level": "Mid-level"
       }
     },
     {
@@ -79,9 +79,9 @@
       "location": "Remoto",
       "description": "We are looking for a cybersecurity specialist with knowledge in infrastructure protection, vulnerability analysis, and incident response. Experience with SIEM and security certifications is a plus.",
       "data": {
-        "technology": "mobile",
+        "technology": ["fortinet", "cisco"],
         "mode": "remoto",
-        "level": "mid-level"
+        "level": "Mid-level"
       }
     },
     {
@@ -91,9 +91,9 @@
       "location": "Madrid",
       "description": "We are looking for a Product Manager with experience in defining and launching digital products. Analytical skills, leadership, and knowledge of agile methodologies are required.",
       "data": {
-        "technology": "mobile",
+        "technology": ["agile", "powerbi"],
         "mode": "madrid",
-        "level": "senior"
+        "level": "Senior"
       }
     },
     {
@@ -103,9 +103,9 @@
       "location": "Valencia",
       "description": "We are looking for a frontend developer with experience in React, TypeScript, and Tailwind CSS. Knowledge of performance optimization and web accessibility is a plus.",
       "data": {
-        "technology": "react",
+        "technology": ["react", "node", "javascript"],
         "mode": "valencia",
-        "level": "mid-level"
+        "level": "Mid-level"
       }
     },
     {
@@ -115,9 +115,9 @@
       "location": "Bogotá",
       "description": "We are looking for a backend developer with experience in Node.js, Express, and NoSQL databases. Knowledge of microservices architecture is required.",
       "data": {
-        "technology": "node",
+        "technology": ["FastAPI", "Django"],
         "mode": "bogota",
-        "level": "mid"
+        "level": "Mid-level"
       }
     },
     {
@@ -127,21 +127,21 @@
       "location": "Remoto",
       "description": "We are looking for a machine learning engineer with experience in predictive modeling and data processing. Knowledge of TensorFlow, PyTorch, and MLOps is a plus.",
       "data": {
-        "technology": "python",
+        "technology": ["python"],
         "mode": "remoto",
-        "level": "senior"
+        "level": "Senior"
       }
     },
     {
       "id": "e8d13c45-36cb-46cf-8f9d-8a0a7b532b8b",
-      "title": "QA Automation Engineer",
+      "title": "QA Automation Engineer Lead",
       "company": "Quality First",
       "location": "Lima",
       "description": "We are looking for a QA engineer with experience in test automation using tools like Selenium, Cypress, or Playwright. Desired knowledge in CI/CD.",
       "data": {
-        "technology": "mobile",
+        "technology": ["playwright", "cypress", "selenium", "node"],
         "mode": "lima",
-        "level": "mid-level"
+        "level": "Lead"
       }
     },
     {
@@ -151,9 +151,9 @@
       "location": "Santiago de Chile",
       "description": "We are looking for a system administrator with experience in Linux, Docker, and server monitoring. Knowledge of Bash or Python scripting will be a plus.",
       "data": {
-        "technology": "mobile",
+        "technology": ["Linux", "Docker"],
         "mode": "santiago",
-        "level": "mid-level"
+        "level": "Mid-level"
       }
     },
     {
@@ -163,9 +163,9 @@
       "location": "Madrid",
       "description": "We are looking for a Scrum Master with experience in agile methodologies and managing multidisciplinary teams. Scrum Master certification is desirable.",
       "data": {
-        "technology": "mobile",
+        "technology": ["agile"],
         "mode": "madrid",
-        "level": "mid-level"
+        "level": "Mid-level"
       }
     },
     {
@@ -175,9 +175,9 @@
       "location": "Monterrey",
       "description": "We are looking for a support technician with skills in incident resolution, networking, and operating systems. Attention to detail and excellent user interaction are required.",
       "data": {
-        "technology": "mobile",
+        "technology": ["microsoft"],
         "mode": "monterrey",
-        "level": "junior"
+        "level": "Junior"
       }
     }
   ]
