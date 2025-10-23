@@ -6,7 +6,7 @@
   <meta charset="UTF-8" />
   <meta name="description" content="Jobs offers list with filters">
   <link rel="stylesheet" href="./styles.css" />
-  <script type="module" src="./script.js"></script> 
+  <script type="module" src="./script.js"></script>
   <!-- async no recomendado porque carga js y no espera que se parsee html cuando termina de cargar js a mitad de html busca ejecutar-->
 </head>
 
@@ -47,35 +47,45 @@
             <path d="M21 21l-6 -6" />
           </svg>
 
-          <input required type="text" placeholder="Look for jobs, companies or skills">
+          <input id="job-search-input" name="search" required type="text"
+            placeholder="Look for jobs, companies or skills">
+          <!-- name in formularies makes appear the word searched in the URL (default behaviour) -->
         </div>
 
 
         <div class="search-filters">
           <select name="technology" id="filter-technology">
-            <option value="">Technology</option>
-            <option value="javascript">JavaScript</option>
-            <option value="python">Python</option>
-            <option value="java">Java</option>
-            <option value="react">React</option>
-            <option value="nodejs">Node.js</option>
+            <optgroup>
+              <option value="">Technology</option>
+              <option value="javascript">JavaScript</option>
+              <option value="python">Python</option>
+              <option value="java">Java</option>
+              <option value="react">React</option>
+              <option value="nodejs">Node.js</option>
+            </optgroup>
           </select>
 
-          <select name="location" id="location">
-            <option value="">location</option>
-            <option value="remoto">Remote</option>
-            <option value="cdmx">Mexico City</option>
-            <option value="guadalajara">Guadalajara</option>
-            <option value="monterrey">Monterrey</option>
-            <option value="barcelona">Barcelona</option>
+          <select name="location" id="filter-location">
+            <optgroup>
+              <option value="">location</option>
+              <option value="remote">Remote</option>
+              <option value="cdmx">Mexico City</option>
+              <option value="guadalajara">Guadalajara</option>
+              <option value="monterrey">Monterrey</option>
+              <option value="barcelona">Barcelona</option>
+
+            </optgroup>
+
           </select>
 
-          <select name="experience-level" id="experience-level">
-            <option value="">Experience Level</option>
-            <option value="junior">Junior</option>
-            <option value="mid">Mid-level</option>
-            <option value="senior">Senior</option>
-            <option value="lead">Lead</option>
+          <select name="experience-level" id="filter-experience-level">
+            <optgroup>
+              <option value="">Experience Level</option>
+              <option value="junior">Junior</option>
+              <option value="mid">Mid-level</option>
+              <option value="senior">Senior</option>
+              <option value="lead">Lead</option>
+            </optgroup>
           </select>
         </div>
       </form>
@@ -86,7 +96,7 @@
       <h2>Search results</h2>
 
       <div class="jobs-listings">
-        <article class="job-listing-card">
+        <article class="job-listing-card" data-mode="remote">
           <div>
             <h3>Software Engineer</h3>
             <small>Tech Solutions Inc. | Remote</small>
@@ -99,7 +109,7 @@
         </article>
 
 
-        <article class="job-listing-card">
+        <article class="job-listing-card" data-mode="cdmx">
           <div>
             <h3>Data Analyst</h3>
             <small>Data Driven Co. | Mexico City</small>
@@ -109,7 +119,7 @@
           <button class="button-apply-job">Apply</button>
         </article>
 
-        <article class="job-listing-card">
+        <article class="job-listing-card" data-mode="guadalajara">
           <div>
             <h3>Mobile Applications Developer</h3>
             <small>Mobile Apps Ltd. | Guadalajara</small>
@@ -119,7 +129,7 @@
           <button class="button-apply-job">Apply</button>
         </article>
 
-        <article class="job-listing-card">
+        <article class="job-listing-card" data-mode="remote">
           <div>
             <h3>DevOps Engineer</h3>
             <small>Cloud Services SA | Remote</small>
@@ -157,4 +167,5 @@
   </footer>
 
 </body>
+
 </html>
