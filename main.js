@@ -1,4 +1,4 @@
-import './fetch-data.js'
-import './filters.js'
-import './apply-button.js'
-import './devjobs-avatar-element.js'
+import './methods/fetch-data.js'
+import './methods/filters.js'
+import './methods/apply-button.js'
+import './methods/devjobs-avatar-element.js'

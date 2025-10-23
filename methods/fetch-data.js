@@ -1,6 +1,8 @@
+//import data from "./data/data.json";
+
 const jobsListingSection = document.querySelector(".jobs-listings");
 
-fetch("data.json")
+fetch("./data/data.json")
   .then((response) => response.json())
   .then((data) => {
     console.log(data.jobs[0].title);
