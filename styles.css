@@ -42,7 +42,7 @@ body {
   line-height: 1.6;
 }
 
-/* Títulos principales */
+/* Main Titles */
 h1 {
   font-size: 1.5rem;
   line-height: 1.2;
@@ -80,7 +80,7 @@ header {
   }
 }
 
-/* Navegación del header a otras páginas */
+/* Navigation from the header to other pages */
 nav {
   align-items: center;
   gap: 1rem;
@@ -100,7 +100,7 @@ nav {
   }
 }
 
-/* Botones del Header */
+/* Header Buttons */
 header div a {
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
@@ -142,7 +142,7 @@ main > section:nth-child(1) {
   }
 }
 
-/* Formulario de Búsqueda */
+/* Search Form  */
 form {
   max-width: 42rem;
   width: 100%;
@@ -212,9 +212,9 @@ button {
   font-size: 1rem;
   white-space: nowrap;
 
-  &:hover, /* pseudo-clase que significa que el ratón está encima */
+  &:hover, /* pseudo-class that means the mouse is over */
   &:focus {
-    /* pseudo-clase que significa que el elemento tiene el foco */
+    /* pseudo-class that means the element is focused */
     background-color: var(--primary-hover);
     outline: 2px solid white;
     outline-offset: 2px;
@@ -269,14 +269,14 @@ main > section:nth-child(2) > div > div:first-child > p {
   margin: 0 auto;
 }
 
-/* Grid de Features */
+/* Feature grid */
 main > section:nth-child(2) footer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 16px;
 }
 
-/* Feature Cards */
+/* Cards Feature */
 .job-listing-card {
   background-color: var(--card-bg);
   padding: 2rem;
@@ -328,7 +328,7 @@ footer {
 .jobs-search {
   margin: 0;
   padding: 0;
-  height: auto !important; /* se deberia evitar el uso de !important */
+  height: auto !important; /* avoid using !important */
 
   h1 {
     font-size: 2.5rem;
