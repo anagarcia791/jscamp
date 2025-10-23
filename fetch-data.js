@@ -12,12 +12,12 @@ fetch("data.json")
       jobElement.dataset.mode = job.data.mode;
       jobElement.dataset.level = job.data.level;
       jobElement.innerHTML = `
-      </div>
-        <h3>${job.title}</h3>
-        <small>${job.company} | ${job.location}</small>
-        <p>${job.description}</p>
-      </div>
-      <button class="button-apply-job">Apply</button>
+        <div>
+          <h3>${job.title}</h3>
+          <small>${job.company} | ${job.location}</small>
+          <p>${job.description}</p>
+        </div>
+        <button class="button-apply-job">Apply</button>
       `;
       jobsListingSection.appendChild(jobElement);
     });
