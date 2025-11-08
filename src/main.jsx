@@ -5,7 +5,8 @@ import Jobs from './Jobs.jsx'
 
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <Jobs />
-  </StrictMode>,
+  <Jobs />
+  // <StrictMode> avoid some problems in dev mode, but can cause double rendering
+  //   <Jobs />
+  // </StrictMode>,
 )
