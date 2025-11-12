@@ -22,8 +22,10 @@ function App() {
 
   const jobsFilteredByFilters = jobsData.jobs.filter((job) => {
     return (
-      filters.technology === "" ||
-      job.data.technology.includes(filters.technology)
+      (filters.technology === "" ||
+        job.data.technology.includes(filters.technology)) &&
+      (filters.location === "" || job.data.mode === filters.location) &&
+      (filters.experienceLevel === "" || job.data.level === filters.experienceLevel)
     );
   });
 
