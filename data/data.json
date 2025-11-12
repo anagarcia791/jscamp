@@ -115,7 +115,7 @@
       "location": "Bogotá",
       "description": "We are looking for a backend developer with experience in Node.js, Express, and NoSQL databases. Knowledge of microservices architecture is required.",
       "data": {
-        "technology": ["FastAPI", "Django"],
+        "technology": ["FastAPI", "Django", "node"],
         "mode": "bogota",
         "level": "Mid-level"
       }
