@@ -6,20 +6,20 @@ function SearchForm({ onSearch, onTextFilter }) {
   const idLocation = useId();
   const idExperienceLevel = useId();
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
-  //   const formData = new FormData(event.target);
+    const formData = new FormData(event.target);
 
-  //   const filters = {
-  //     text: formData.get(idText),
-  //     technology: formData.get(idTechnology),
-  //     location: formData.get(idLocation),
-  //     experienceLevel: formData.get(idExperienceLevel),
-  //   };
+    const filters = {
+      text: formData.get(idText),
+      technology: formData.get(idTechnology),
+      location: formData.get(idLocation),
+      experienceLevel: formData.get(idExperienceLevel),
+    };
 
-  //   onSearch(filters);
-  // };
+    onSearch(filters);
+  };
 
   // handel filter individually on change
   const handleFilterChange = (event) => {
@@ -46,7 +46,7 @@ function SearchForm({ onSearch, onTextFilter }) {
       <h1>Find your next job</h1>
       <p>Explore thousands of opportunities in the tech sector.</p>
       <form
-        //onSubmit={handleSubmit}
+        onSubmit={handleSubmit}
         id="empleos-search-form"
         role="search"
       >
