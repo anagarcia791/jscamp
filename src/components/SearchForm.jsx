@@ -6,10 +6,25 @@ function SearchForm({ onSearch, onTextFilter }) {
   const idLocation = useId();
   const idExperienceLevel = useId();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
 
-    const formData = new FormData(event.target);
+  //   const formData = new FormData(event.target);
+
+  //   const filters = {
+  //     text: formData.get(idText),
+  //     technology: formData.get(idTechnology),
+  //     location: formData.get(idLocation),
+  //     experienceLevel: formData.get(idExperienceLevel),
+  //   };
+
+  //   onSearch(filters);
+  // };
+
+  // handel filter individually on change
+  const handleFilterChange = (event) => {
+    const form = event.target.form;
+    const formData = new FormData(form);
 
     const filters = {
       text: formData.get(idText),
@@ -30,7 +45,11 @@ function SearchForm({ onSearch, onTextFilter }) {
     <>
       <h1>Find your next job</h1>
       <p>Explore thousands of opportunities in the tech sector.</p>
-      <form onSubmit={handleSubmit} id="empleos-search-form" role="search">
+      <form
+        //onSubmit={handleSubmit}
+        id="empleos-search-form"
+        role="search"
+      >
         <div className="search-bar">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -60,7 +79,11 @@ function SearchForm({ onSearch, onTextFilter }) {
         </div>
 
         <div className="search-filters">
-          <select name={idTechnology} id="filter-technology">
+          <select
+            name={idTechnology}
+            id="filter-technology"
+            onChange={handleFilterChange}
+          >
             <optgroup>
               <option value="">Technology</option>
               <option value="javascript">JavaScript</option>
@@ -71,7 +94,11 @@ function SearchForm({ onSearch, onTextFilter }) {
             </optgroup>
           </select>
 
-          <select name={idLocation} id="filter-location">
+          <select
+            name={idLocation}
+            id="filter-location"
+            onChange={handleFilterChange}
+          >
             <optgroup>
               <option value="">Location</option>
               <option value="remote">Remote</option>
@@ -82,7 +109,11 @@ function SearchForm({ onSearch, onTextFilter }) {
             </optgroup>
           </select>
 
-          <select name={idExperienceLevel} id="filter-experience-level">
+          <select
+            name={idExperienceLevel}
+            id="filter-experience-level"
+            onChange={handleFilterChange}
+          >
             <optgroup>
               <option value="">Experience Level</option>
               <option value="Junior">Junior</option>

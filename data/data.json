@@ -40,11 +40,11 @@
       "id": "f62d8a34-923a-4ac2-9b0b-14e0ac2f5405",
       "title": "DevOps Engineer",
       "company": "Cloud Services SA",
-      "location": "Remoto",
+      "location": "Remote",
       "description": "We are looking for a DevOps engineer with experience in managing cloud infrastructures, process automation, and continuous integration tools. Knowledge of AWS, Azure, or GCP is required.",
       "data": {
         "technology": ["aws", "azure", "gcp"],
-        "mode": "remoto",
+        "mode": "remote",
         "level": "Mid-level"
       }
     },
@@ -76,11 +76,11 @@
       "id": "bb8f2a99-6a20-4f9e-912a-16f54a49b8c3",
       "title": "Cybersecurity Specialist",
       "company": "SafeNet Solutions",
-      "location": "Remoto",
+      "location": "Remote",
       "description": "We are looking for a cybersecurity specialist with knowledge in infrastructure protection, vulnerability analysis, and incident response. Experience with SIEM and security certifications is a plus.",
       "data": {
         "technology": ["fortinet", "cisco"],
-        "mode": "remoto",
+        "mode": "remote",
         "level": "Mid-level"
       }
     },
@@ -124,11 +124,11 @@
       "id": "b65a3c9f-b174-4d86-b8a2-9cf9b1e13a22",
       "title": "Machine Learning Engineer",
       "company": "AI Labs",
-      "location": "Remoto",
+      "location": "Remote",
       "description": "We are looking for a machine learning engineer with experience in predictive modeling and data processing. Knowledge of TensorFlow, PyTorch, and MLOps is a plus.",
       "data": {
         "technology": ["python"],
-        "mode": "remoto",
+        "mode": "remote",
         "level": "Senior"
       }
     },
