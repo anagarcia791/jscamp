@@ -41,15 +41,28 @@ function SearchForm({ onSearch, onTextFilter }) {
     onTextFilter(text);
   };
 
+  const handleClearFilters = () => {
+    // Reset only the select filters, not the text input
+    document.getElementById("filter-technology").value = "";
+    document.getElementById("filter-location").value = "";
+    document.getElementById("filter-experience-level").value = "";
+    
+    // Get current text value
+    const currentText = document.getElementById("empleos-search-input").value;
+    
+    onSearch({
+      text: currentText,
+      technology: "",
+      location: "",
+      experienceLevel: "",
+    });
+  };
+
   return (
     <>
       <h1>Find your next job</h1>
       <p>Explore thousands of opportunities in the tech sector.</p>
-      <form
-        onSubmit={handleSubmit}
-        id="empleos-search-form"
-        role="search"
-      >
+      <form onSubmit={handleSubmit} id="empleos-search-form" role="search">
         <div className="search-bar">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -78,7 +91,7 @@ function SearchForm({ onSearch, onTextFilter }) {
           />
         </div>
 
-        <div className="search-filters">
+        <div className="search-filters" id="search-filters">
           <select
             name={idTechnology}
             id="filter-technology"
@@ -122,6 +135,10 @@ function SearchForm({ onSearch, onTextFilter }) {
               <option value="Lead">Lead</option>
             </optgroup>
           </select>
+
+          <button type="button" onClick={handleClearFilters}>
+            Clear Filters
+          </button>
         </div>
       </form>
     </>
