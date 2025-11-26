@@ -1,17 +1,11 @@
 import { useState } from "react";
 
-import {
-  Header,
-  SearchForm,
-  JobListing,
-  Pagination,
-  Footer,
-} from "./components";
-import jobsData from "../data/data.json";
+import { SearchForm, JobListing, Pagination } from "./../components";
+import jobsData from "./../../data/data.json";
 
 const RESULTS_PER_PAGE = 4;
 
-function App() {
+export function SearchPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [textToFilter, setTextToFilter] = useState("");
   const [filters, setFilters] = useState({
@@ -25,7 +19,8 @@ function App() {
       (filters.technology === "" ||
         job.data.technology.includes(filters.technology)) &&
       (filters.location === "" || job.data.mode === filters.location) &&
-      (filters.experienceLevel === "" || job.data.level === filters.experienceLevel)
+      (filters.experienceLevel === "" ||
+        job.data.level === filters.experienceLevel)
     );
   });
 
@@ -58,25 +53,19 @@ function App() {
   };
 
   return (
-    <>
-      <Header />
-      <main>
-        <section className="jobs-search">
-          <SearchForm onSearch={handleSearch} onTextFilter={handleTextFilter} />
-        </section>
+    <main>
+      <section className="jobs-search">
+        <SearchForm onSearch={handleSearch} onTextFilter={handleTextFilter} />
+      </section>
 
-        <section>
-          <JobListing jobs={pagedResults} />
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={handlePageChange}
-          />
-        </section>
-      </main>
-      <Footer />
-    </>
+      <section>
+        <JobListing jobs={pagedResults} />
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+        />
+      </section>
+    </main>
   );
 }
-
-export default App;
