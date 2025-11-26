@@ -3,7 +3,7 @@ import JobCard from "./JobCard.jsx";
 function JobListing({ jobs }) {
   return (
     <>
-      <h2>Search results</h2>
+      <h2 className="search-results-title">Search results</h2>
       <div className="jobs-listings">
         {jobs.map((job) => (
           <JobCard key={job.id} job={job} />
