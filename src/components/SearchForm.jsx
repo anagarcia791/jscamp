@@ -6,24 +6,9 @@ function SearchForm({ onSearch, onTextFilter }) {
   const idLocation = useId();
   const idExperienceLevel = useId();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    const formData = new FormData(event.target);
-
-    const filters = {
-      text: formData.get(idText),
-      technology: formData.get(idTechnology),
-      location: formData.get(idLocation),
-      experienceLevel: formData.get(idExperienceLevel),
-    };
-
-    onSearch(filters);
-  };
-
   // handel filter individually on change
   const handleFilterChange = (event) => {
-    const form = event.target.form;
+    const form = event.currentTarget;
     const formData = new FormData(form);
 
     const filters = {
@@ -46,10 +31,10 @@ function SearchForm({ onSearch, onTextFilter }) {
     document.getElementById("filter-technology").value = "";
     document.getElementById("filter-location").value = "";
     document.getElementById("filter-experience-level").value = "";
-    
+
     // Get current text value
     const currentText = document.getElementById("empleos-search-input").value;
-    
+
     onSearch({
       text: currentText,
       technology: "",
@@ -62,7 +47,11 @@ function SearchForm({ onSearch, onTextFilter }) {
     <>
       <h1>Find your next job</h1>
       <p>Explore thousands of opportunities in the tech sector.</p>
-      <form onSubmit={handleSubmit} id="empleos-search-form" role="search">
+      <form
+        onChange={handleFilterChange}
+        id="empleos-search-form"
+        role="search"
+      >
         <div className="search-bar">
           <svg
             xmlns="http://www.w3.org/2000/svg"
