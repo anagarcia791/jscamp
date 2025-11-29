@@ -6,6 +6,19 @@ import { useRouter } from "../hooks/useRouter.jsx";
 
 const RESULTS_PER_PAGE = 4;
 
+const buildQueryParams = (filters, currentPage) => {
+  const params = new URLSearchParams();
+  
+  if (filters.text) params.append("text", filters.text);
+  if (filters.technology) params.append("technology", filters.technology);
+  if (filters.location) params.append("type", filters.location);
+  if (filters.experienceLevel) params.append("level", filters.experienceLevel);
+  
+  if (currentPage > 1) params.append("page", currentPage);
+  
+  return params;
+};
+
 const useFilters = () => {
   const { navigateTo } = useRouter();
 
@@ -38,12 +51,7 @@ const useFilters = () => {
       try {
         setLoading(true);
 
-        const params = new URLSearchParams();
-        if (textToFilter) params.append("text", textToFilter);
-        if (filters.technology) params.append("technology", filters.technology);
-        if (filters.location) params.append("type", filters.location);
-        if (filters.experienceLevel)
-          params.append("level", filters.experienceLevel);
+        const params = buildQueryParams(filters, currentPage);
 
         const offset = (currentPage - 1) * RESULTS_PER_PAGE;
         params.append("limit", RESULTS_PER_PAGE);
@@ -54,39 +62,31 @@ const useFilters = () => {
         const response = await fetch(
           `https://jscamp-api.vercel.app/api/jobs?${queryParams}`
         );
-
-        console.log("Fetching jobs with URL:", response.url);
+        
         const json = await response.json();
 
         setJobs(json.data);
         setTotal(json.total);
       } catch (error) {
         console.error("Error fetching jobs:", error);
+        throw new Error("Failed to fetch jobs");
       } finally {
         setLoading(false);
       }
     }
 
     fetchJobs();
-  }, [filters, currentPage, textToFilter]);
+  }, [filters, currentPage]);
 
   useEffect(() => {
-    const params = new URLSearchParams();
-
-    if (textToFilter) params.append("text", textToFilter);
-    if (filters.technology) params.append("technology", filters.technology);
-    if (filters.location) params.append("type", filters.location);
-    if (filters.experienceLevel)
-      params.append("level", filters.experienceLevel);
-
-    if (currentPage > 1) params.append("page", currentPage);
+    const params = buildQueryParams(filters, textToFilter, currentPage);
 
     const newUrl = params.toString()
       ? `${window.location.pathname}?${params.toString()}`
       : window.location.pathname;
 
     navigateTo(newUrl);
-  }, [filters, currentPage, textToFilter, navigateTo]);
+  }, [filters, currentPage, textToFilter]);
 
   const totalPages = Math.ceil(total / RESULTS_PER_PAGE);
 
