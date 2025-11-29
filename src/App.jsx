@@ -1,13 +1,17 @@
+import { Routes, Route } from "react-router";
+
 import { Header, Footer } from "./components";
-import { HomePage, SearchPage } from "./pages";
+import { HomePage, SearchPage, NotFoundPage } from "./pages";
 
 function App() {
   return (
     <>
       <Header />
-      <HomePage />
-      {/* <Route path="/" component={HomePage} /> */}
-      {/* <Route path="/search" component={SearchPage} /> */}
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/search" element={<SearchPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
       <Footer />
     </>
   );

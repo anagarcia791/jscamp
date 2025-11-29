@@ -13,9 +13,12 @@ function JobCard({ job }) {
     <>
       <article className="job-listing-card" data-testid={job.id}>
         <div>
-          <h3>{job.title}</h3>
+          {/* <h3>{job.title}</h3>
           <small>{`${job.company} | ${job.location} | ${job.data.level}`}</small>
-          <p>{job.description}</p>
+          <p>{job.description}</p> */}
+          <h3>{job.titulo}</h3>
+          <small>{`${job.empresa} | ${job.ubicacion} | ${job.data.nivel}`}</small>
+          <p>{job.descripcion}</p>
         </div>
         <button className={buttonClasses} onClick={handleApplyClick}>
           {isApplied ? "Applied" : "Apply"}

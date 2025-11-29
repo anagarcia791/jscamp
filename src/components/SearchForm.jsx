@@ -1,54 +1,83 @@
-import { useId } from "react";
+import { useId, useState, useRef } from "react";
 
-function SearchForm({ onSearch, onTextFilter }) {
-  const idText = useId();
-  const idTechnology = useId();
-  const idLocation = useId();
-  const idExperienceLevel = useId();
+const useSearchForm = ({
+  idText,
+  idTechnology,
+  idLocation,
+  idExperienceLevel,
+  onSearch,
+}) => {
+  const timeoutId = useRef(null);
+  const [searchText, setSearchText] = useState("");
 
-  // handel filter individually on change
-  const handleFilterChange = (event) => {
-    const form = event.currentTarget;
+  // apply filters when any filter changes
+  const handleFiltersChange = (event) => {
+    const form = event.target.closest("form");
+    if (!form) return;
+    
     const formData = new FormData(form);
 
     const filters = {
-      text: formData.get(idText),
-      technology: formData.get(idTechnology),
-      location: formData.get(idLocation),
-      experienceLevel: formData.get(idExperienceLevel),
+      text: formData.get(idText) || "",
+      technology: formData.get(idTechnology) || "",
+      location: formData.get(idLocation) || "",
+      experienceLevel: formData.get(idExperienceLevel) || "",
     };
 
-    onSearch(filters);
+    setSearchText(filters.text);
+
+    if (timeoutId.current) {
+      clearTimeout(timeoutId.current);
+    }
+
+    timeoutId.current = setTimeout(() => {
+      onSearch(filters);
+    }, 500);
   };
 
-  const handleTextChange = (event) => {
-    const text = event.target.value;
-    onTextFilter(text);
-  };
-
+  //reset all filters
   const handleClearFilters = () => {
-    // Reset only the select filters, not the text input
     document.getElementById("filter-technology").value = "";
     document.getElementById("filter-location").value = "";
     document.getElementById("filter-experience-level").value = "";
-
-    // Get current text value
-    const currentText = document.getElementById("empleos-search-input").value;
+    document.getElementById("empleos-search-input").value = "";
 
     onSearch({
-      text: currentText,
+      text: "",
       technology: "",
       location: "",
       experienceLevel: "",
     });
   };
 
+  return {
+    searchText,
+    handleFiltersChange,
+    handleClearFilters,
+  };
+};
+
+function SearchForm({ initialText, onSearch }) {
+  const idText = useId();
+  const idTechnology = useId();
+  const idLocation = useId();
+  const idExperienceLevel = useId();
+  const filtersRef = useRef(null);
+
+  const { handleFiltersChange, handleClearFilters } = useSearchForm({
+    idText,
+    idTechnology,
+    idLocation,
+    idExperienceLevel,
+    onSearch,
+  });
+
   return (
     <>
       <h1>Find your next job</h1>
       <p>Explore thousands of opportunities in the tech sector.</p>
       <form
-        onChange={handleFilterChange}
+        onChange={handleFiltersChange}
         id="empleos-search-form"
         role="search"
       >
@@ -73,10 +102,9 @@ function SearchForm({ onSearch, onTextFilter }) {
           <input
             name={idText}
             id="empleos-search-input"
-            //required
             type="text"
             placeholder="Look for jobs, companies or skills"
-            onChange={handleTextChange}
+            defaultValue={initialText}
           />
         </div>
 
@@ -84,7 +112,7 @@ function SearchForm({ onSearch, onTextFilter }) {
           <select
             name={idTechnology}
             id="filter-technology"
-            onChange={handleFilterChange}
+            ref={filtersRef}
           >
             <optgroup>
               <option value="">Technology</option>
@@ -99,7 +127,7 @@ function SearchForm({ onSearch, onTextFilter }) {
           <select
             name={idLocation}
             id="filter-location"
-            onChange={handleFilterChange}
+            ref={filtersRef}
           >
             <optgroup>
               <option value="">Location</option>
@@ -114,7 +142,7 @@ function SearchForm({ onSearch, onTextFilter }) {
           <select
             name={idExperienceLevel}
             id="filter-experience-level"
-            onChange={handleFilterChange}
+            ref={filtersRef}
           >
             <optgroup>
               <option value="">Experience Level</option>

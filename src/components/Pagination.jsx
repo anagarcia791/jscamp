@@ -29,11 +29,16 @@ function Pagination({ currentPage = 1, totalPages = 10, onPageChange }) {
 
   const handleChangePage = (event, page) => {
     event.preventDefault();
-    //const page = Number(event.target.dataset.page);
 
     if (page !== currentPage) {
       onPageChange(page);
     }
+  };
+
+  const buildPageUrl = (page) => {
+    const url = new URL(window.location);
+    url.searchParams.set("page", page);
+    return `${url.pathname}?${url.searchParams.toString()}`;
   };
 
   return (
@@ -43,7 +48,11 @@ function Pagination({ currentPage = 1, totalPages = 10, onPageChange }) {
         role="navigation"
         aria-label="Pagination Navigation"
       >
-        <a href="#" style={stylePrevButton} onClick={handlePrevClick}>
+        <a
+          href={buildPageUrl(currentPage - 1)}
+          style={stylePrevButton}
+          onClick={handlePrevClick}
+        >
           <svg
             width="16"
             height="16"
@@ -62,17 +71,20 @@ function Pagination({ currentPage = 1, totalPages = 10, onPageChange }) {
         {pages.map((page) => (
           <a
             key={`page-${page}`}
-            data-page={page} //way to use data attributes in react, example of use in line 30 and 62
-            href="#"
+            data-page={page}
+            href={buildPageUrl(page)}
             className={currentPage === page ? styles.isActive : ""}
-            //onClick={handleChangePage}
             onClick={(event) => handleChangePage(event, page)}
           >
             {page}
           </a>
         ))}
 
-        <a href="#" style={styleNextButton} onClick={handleNextClick}>
+        <a
+          href={buildPageUrl(currentPage + 1)}
+          style={styleNextButton}
+          onClick={handleNextClick}
+        >
           <svg
             width="16"
             height="16"

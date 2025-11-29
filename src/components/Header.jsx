@@ -1,8 +1,10 @@
+import { Link } from "./Link.jsx";
+
 function Header() {
   return (
     <header>
-      {/* <Link href="/" style={{ textDecoration: "none" }}> */}
-        <h1>
+      <Link href="/" style={{ textDecoration: "none" }}>
+        <h1 style={{ color: "white" }}>
           <svg
             fill="none"
             stroke="currentColor"
@@ -17,10 +19,10 @@ function Header() {
           </svg>
           DevJobs
         </h1>
-      {/* </Link> */}
+      </Link>
 
       <nav>
-        <a href="#">Jobs</a>
+        <Link href="/search">Jobs</Link>
       </nav>
     </header>
   );
