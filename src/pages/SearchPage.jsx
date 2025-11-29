@@ -1,26 +1,25 @@
 import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router";
 
 import { SearchForm, JobListing, Pagination } from "./../components";
-
-import { useRouter } from "../hooks/useRouter.jsx";
 
 const RESULTS_PER_PAGE = 4;
 
 const buildQueryParams = (filters, currentPage) => {
   const params = new URLSearchParams();
-  
+
   if (filters.text) params.append("text", filters.text);
   if (filters.technology) params.append("technology", filters.technology);
   if (filters.location) params.append("type", filters.location);
   if (filters.experienceLevel) params.append("level", filters.experienceLevel);
-  
+
   if (currentPage > 1) params.append("page", currentPage);
-  
+
   return params;
 };
 
 const useFilters = () => {
-  const { navigateTo } = useRouter();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const [currentPage, setCurrentPage] = useState(() => {
     const params = new URLSearchParams(window.location.search);
@@ -28,17 +27,15 @@ const useFilters = () => {
     return page > 0 ? page : 1;
   });
 
-  const [textToFilter, setTextToFilter] = useState(() => {
-    const params = new URLSearchParams(window.location.search);
-    return params.get("text") || "";
-  });
+  const [textToFilter, setTextToFilter] = useState(
+    () => searchParams.get("text") || ""
+  );
 
   const [filters, setFilters] = useState(() => {
-    const params = new URLSearchParams(window.location.search);
     return {
-      technology: params.get("technology") || "",
-      location: params.get("type") || "",
-      experienceLevel: params.get("level") || "",
+      technology: searchParams.get("technology") || "",
+      location: searchParams.get("type") || "",
+      experienceLevel: searchParams.get("level") || "",
     };
   });
 
@@ -79,18 +76,13 @@ const useFilters = () => {
     fetchJobs();
   }, [filters, currentPage, textToFilter]);
 
-  const totalPages = Math.ceil(total / RESULTS_PER_PAGE);
-
   useEffect(() => {
     const filtersWithText = { ...filters, text: textToFilter };
     const params = buildQueryParams(filtersWithText, currentPage);
+    setSearchParams(params);
+  }, [filters, currentPage, textToFilter, setSearchParams]);
 
-    const newUrl = params.toString()
-      ? `${window.location.pathname}?${params.toString()}`
-      : window.location.pathname;
-
-    navigateTo(newUrl);
-  }, [filters, currentPage, textToFilter, navigateTo]);
+  const totalPages = Math.ceil(total / RESULTS_PER_PAGE);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -109,7 +101,7 @@ const useFilters = () => {
     textToFilter,
     totalPages,
     handlePageChange,
-    handleSearch
+    handleSearch,
   };
 };
 
@@ -121,16 +113,13 @@ export function SearchPage() {
     textToFilter,
     totalPages,
     handlePageChange,
-    handleSearch
+    handleSearch,
   } = useFilters();
 
   return (
     <main>
       <section className="jobs-search">
-        <SearchForm
-          initialText={textToFilter}
-          onSearch={handleSearch}
-        />
+        <SearchForm initialText={textToFilter} onSearch={handleSearch} />
       </section>
 
       <section>
