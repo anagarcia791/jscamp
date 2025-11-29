@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router";
 
 import { Header, Footer } from "./components";
-import { HomePage, SearchPage, NotFoundPage } from "./pages";
+import { HomePage, SearchPage, JobDetailPage, NotFoundPage } from "./pages";
 
 function App() {
   return (
@@ -10,6 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/search" element={<SearchPage />} />
+        <Route path="/jobs/:jobId" element={<JobDetailPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
