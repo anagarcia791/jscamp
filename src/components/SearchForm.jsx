@@ -14,7 +14,7 @@ const useSearchForm = ({
   const handleFiltersChange = (event) => {
     const form = event.target.closest("form");
     if (!form) return;
-    
+
     const formData = new FormData(form);
 
     const filters = {
@@ -36,17 +36,40 @@ const useSearchForm = ({
   };
 
   //reset all filters
-  const handleClearFilters = () => {
-    document.getElementById("filter-technology").value = "";
-    document.getElementById("filter-location").value = "";
-    document.getElementById("filter-experience-level").value = "";
-    document.getElementById("empleos-search-input").value = "";
+  const handleClearFilters = (
+    inputRef,
+    technologyRef,
+    locationRef,
+    experienceLevelRef
+  ) => {
+    technologyRef.current.value = "";
+    locationRef.current.value = "";
+    experienceLevelRef.current.value = "";
 
     onSearch({
-      text: "",
+      text: inputRef.current.value,
       technology: "",
       location: "",
       experienceLevel: "",
+    });
+  };
+
+  const handleClearInput = (
+    event,
+    inputRef,
+    technologyRef,
+    locationRef,
+    experienceLevelRef
+  ) => {
+    event.preventDefault();
+    inputRef.current.value = "";
+    setSearchText("");
+
+    onSearch({
+      text: "",
+      technology: technologyRef.current.value,
+      location: locationRef.current.value,
+      experienceLevel: experienceLevelRef.current.value,
     });
   };
 
@@ -54,6 +77,7 @@ const useSearchForm = ({
     searchText,
     handleFiltersChange,
     handleClearFilters,
+    handleClearInput,
   };
 };
 
@@ -62,15 +86,19 @@ function SearchForm({ initialText, onSearch }) {
   const idTechnology = useId();
   const idLocation = useId();
   const idExperienceLevel = useId();
-  const filtersRef = useRef(null);
+  const inputRef = useRef(null);
+  const technologyRef = useRef(null);
+  const locationRef = useRef(null);
+  const experienceLevelRef = useRef(null);
 
-  const { handleFiltersChange, handleClearFilters } = useSearchForm({
-    idText,
-    idTechnology,
-    idLocation,
-    idExperienceLevel,
-    onSearch,
-  });
+  const { handleFiltersChange, handleClearFilters, handleClearInput } =
+    useSearchForm({
+      idText,
+      idTechnology,
+      idLocation,
+      idExperienceLevel,
+      onSearch,
+    });
 
   return (
     <>
@@ -105,14 +133,28 @@ function SearchForm({ initialText, onSearch }) {
             type="text"
             placeholder="Look for jobs, companies or skills"
             defaultValue={initialText}
+            ref={inputRef}
           />
+          <button
+            onClick={(event) =>
+              handleClearInput(
+                event,
+                inputRef,
+                technologyRef,
+                locationRef,
+                experienceLevelRef
+              )
+            }
+          >
+            ✖︎
+          </button>
         </div>
 
         <div className="search-filters" id="search-filters">
           <select
             name={idTechnology}
             id="filter-technology"
-            ref={filtersRef}
+            ref={technologyRef}
           >
             <optgroup>
               <option value="">Technology</option>
@@ -124,11 +166,7 @@ function SearchForm({ initialText, onSearch }) {
             </optgroup>
           </select>
 
-          <select
-            name={idLocation}
-            id="filter-location"
-            ref={filtersRef}
-          >
+          <select name={idLocation} id="filter-location" ref={locationRef}>
             <optgroup>
               <option value="">Location</option>
               <option value="remote">Remote</option>
@@ -142,7 +180,7 @@ function SearchForm({ initialText, onSearch }) {
           <select
             name={idExperienceLevel}
             id="filter-experience-level"
-            ref={filtersRef}
+            ref={experienceLevelRef}
           >
             <optgroup>
               <option value="">Experience Level</option>
@@ -153,7 +191,17 @@ function SearchForm({ initialText, onSearch }) {
             </optgroup>
           </select>
 
-          <button type="button" onClick={handleClearFilters}>
+          <button
+            type="button"
+            onClick={() =>
+              handleClearFilters(
+                inputRef,
+                technologyRef,
+                locationRef,
+                experienceLevelRef
+              )
+            }
+          >
             Clear Filters
           </button>
         </div>

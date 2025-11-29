@@ -25,7 +25,7 @@ const useFilters = () => {
   const [currentPage, setCurrentPage] = useState(() => {
     const params = new URLSearchParams(window.location.search);
     const page = Number(params.get("page"));
-    return Number.isNaN(page) ? page : 1;
+    return page > 0 ? page : 1;
   });
 
   const [textToFilter, setTextToFilter] = useState(() => {
@@ -63,7 +63,7 @@ const useFilters = () => {
         const response = await fetch(
           `https://jscamp-api.vercel.app/api/jobs?${queryParams}`
         );
-        
+
         const json = await response.json();
 
         setJobs(json.data);
@@ -79,6 +79,8 @@ const useFilters = () => {
     fetchJobs();
   }, [filters, currentPage, textToFilter]);
 
+  const totalPages = Math.ceil(total / RESULTS_PER_PAGE);
+
   useEffect(() => {
     const filtersWithText = { ...filters, text: textToFilter };
     const params = buildQueryParams(filtersWithText, currentPage);
@@ -89,8 +91,6 @@ const useFilters = () => {
 
     navigateTo(newUrl);
   }, [filters, currentPage, textToFilter, navigateTo]);
-
-  const totalPages = Math.ceil(total / RESULTS_PER_PAGE);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
