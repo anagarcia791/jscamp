@@ -51,7 +51,8 @@ const useFilters = () => {
       try {
         setLoading(true);
 
-        const params = buildQueryParams(filters, currentPage);
+        const filtersWithText = { ...filters, text: textToFilter };
+        const params = buildQueryParams(filtersWithText, currentPage);
 
         const offset = (currentPage - 1) * RESULTS_PER_PAGE;
         params.append("limit", RESULTS_PER_PAGE);
@@ -76,17 +77,18 @@ const useFilters = () => {
     }
 
     fetchJobs();
-  }, [filters, currentPage]);
+  }, [filters, currentPage, textToFilter]);
 
   useEffect(() => {
-    const params = buildQueryParams(filters, textToFilter, currentPage);
+    const filtersWithText = { ...filters, text: textToFilter };
+    const params = buildQueryParams(filtersWithText, currentPage);
 
     const newUrl = params.toString()
       ? `${window.location.pathname}?${params.toString()}`
       : window.location.pathname;
 
     navigateTo(newUrl);
-  }, [filters, currentPage, textToFilter]);
+  }, [filters, currentPage, textToFilter, navigateTo]);
 
   const totalPages = Math.ceil(total / RESULTS_PER_PAGE);
 
