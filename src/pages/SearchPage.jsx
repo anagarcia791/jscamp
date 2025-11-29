@@ -8,12 +8,12 @@ const RESULTS_PER_PAGE = 4;
 const buildQueryParams = (filters, currentPage) => {
   const params = new URLSearchParams();
 
-  if (filters.text) params.append("text", filters.text);
-  if (filters.technology) params.append("technology", filters.technology);
-  if (filters.location) params.append("type", filters.location);
-  if (filters.experienceLevel) params.append("level", filters.experienceLevel);
+  if (filters.text) params.set("text", filters.text);
+  if (filters.technology) params.set("technology", filters.technology);
+  if (filters.location) params.set("type", filters.location);
+  if (filters.experienceLevel) params.set("level", filters.experienceLevel);
 
-  if (currentPage > 1) params.append("page", currentPage);
+  if (currentPage > 1) params.set("page", currentPage);
 
   return params;
 };
